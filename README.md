@@ -63,14 +63,14 @@ seafood-dynamic-pricing-api/
 │   └── SOURCE_NOTES.md
 ├── Dockerfile
 ├── requirements.txt
-├── .env.example
+├── .github/workflows/tests.yml   # 자동 테스트
 └── README.md
 ```
 
 ## Run
 
 ```bash
-git clone https://github.com/<YOUR_ID>/seafood-dynamic-pricing-api.git
+git clone https://github.com/rlaqhfla0917-bit/seafood-dynamic-pricing-api.git
 cd seafood-dynamic-pricing-api
 
 python -m venv .venv
