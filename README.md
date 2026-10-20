@@ -6,6 +6,21 @@ KT AIVLE School 팀 프로젝트 발표자료에 포함된 **API 명세·프로�
 > 수산물 가격을 전화·메신저·엑셀로 수동 관리하던 흐름을  
 > **데이터 입력 → 가격 자동 계산 → 주문/재고 반영 → API 응답**으로 연결하는 것이 핵심입니다.
 
+
+## Verification & Code Evidence
+
+**코드에서 확인할 수 있는 범위**
+- [`app/price_engine.py`](app/price_engine.py): 신선도·어획량·재고 조건을 합산해 기준가에 적용하는 가격 계산
+- [`app/routes/orders.py`](app/routes/orders.py): 주문 생성·재고 차감 및 재고 부족 `409 Conflict`
+- [`tests/test_api.py`](tests/test_api.py): 가격 계산과 주문 생성, 재고 부족 예외 테스트
+- [GitHub Actions](https://github.com/rlaqhfla0917-bit/seafood-dynamic-pricing-api/actions/workflows/tests.yml): `python -m pytest -q` 자동 실행 기록
+
+**재현 예시:** 기본가 20,000원, 신선도 A +20%, 어획량 100 초과 -5%, 재고 50 초과 -10%인 경우 합산 조정률 +5% → **21,000원**. 각 조정률은 복리 계산이 아닌 합산입니다.
+
+**출처/한계:** KT AIVLE School 발표자료에 기록된 규칙과 예시를 바탕으로 **포트폴리오용으로 재구현**한 코드입니다. 실시간 외부 시세 자동 연동, 상용 운영 검증을 주장하지 않습니다.
+
+---
+
 ## 주요 기능
 
 - 수산물 상품 등록·조회
