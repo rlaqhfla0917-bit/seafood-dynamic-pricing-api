@@ -1,0 +1,13 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+venv/
+.venv/
+v/cache/
+*.db
+.env
+.env.*
+!.env.example
+.DS_Store
